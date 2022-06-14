@@ -1,0 +1,7 @@
+@use "colors" as *;
+html {
+  font-size: 62.5% !important;
+}
+body {
+  background-color: $primary-custom;
+}
