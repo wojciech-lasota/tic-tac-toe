@@ -1,2 +1,6 @@
 @use "sections/body";
-@use "sections/colors";
+@use "fontawesome.scss";
+@use "components/colors";
+
+// nav-bar
+@use "sections/nav-bar";
