@@ -1,0 +1,45 @@
+@use "../components/colors" as *;
+main {
+  padding-top: 5rem;
+  height: 70rem;
+  //   background-color: red;
+  > div {
+    // height: 50px;
+    // background-color: pink;
+
+    .left-side {
+      //   height: 15px;
+      //   border: 1px solid white;
+      background: rgb($primary-custom, 0.5);
+      border-radius: 2rem;
+      padding: 1rem;
+
+      color: $yellow-custom;
+      //   background: $yellow-custom;
+    }
+    .playground {
+      //   margin-left: 10rem;
+      //   height: 100px;
+      width: 40rem;
+      //   background-color: gray;
+      //   border: 1px solid green;
+      .tiles {
+        margin: 1rem 0.5rem 0.5rem 1rem !important;
+
+        width: 10rem;
+        height: 10rem;
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+      }
+    }
+    .control {
+      margin-top: 2rem;
+      margin-left: 15rem;
+      i {
+        font-size: 5rem;
+        color: $yellow-custom;
+      }
+    }
+  }
+}
+// document.querySelector("body > div > main > div")

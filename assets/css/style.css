@@ -10153,5 +10153,33 @@ header nav .nav-bar .logo img {
 header nav .nav-bar .logo h3 {
   color: #fca311;
 }
+main {
+  padding-top: 5rem;
+  height: 70rem;
+}
+main > div .left-side {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2rem;
+  padding: 1rem;
+  color: #fca311;
+}
+main > div .playground {
+  width: 40rem;
+}
+main > div .playground .tiles {
+  margin: 1rem 0.5rem 0.5rem 1rem !important;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+main > div .control {
+  margin-top: 2rem;
+  margin-left: 15rem;
+}
+main > div .control i {
+  font-size: 5rem;
+  color: #fca311;
+}
 
 /*# sourceMappingURL=style.css.map */
