@@ -10150,12 +10150,23 @@ header nav .nav-bar .logo {
 header nav .nav-bar .logo img {
   width: 10rem;
 }
+@media only screen and (max-width: 575px) {
+  header nav .nav-bar .logo img {
+    width: 5rem;
+  }
+}
 header nav .nav-bar .logo h3 {
   color: #fca311;
 }
+
 main {
   padding-top: 5rem;
   height: 70rem;
+}
+@media only screen and (max-width: 575px) {
+  main {
+    padding-top: 1rem;
+  }
 }
 main > div .left-side {
   background: rgba(0, 0, 0, 0.5);
@@ -10163,8 +10174,21 @@ main > div .left-side {
   padding: 1rem;
   color: #fca311;
 }
+@media only screen and (max-width: 575px) {
+  main > div .small-device-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
 main > div .playground {
-  width: 40rem;
+  width: 35rem;
+}
+@media only screen and (max-width: 575px) {
+  main > div .playground {
+    width: 30rem;
+  }
 }
 main > div .playground .tiles {
   margin: 1rem 0.5rem 0.5rem 1rem !important;
@@ -10173,9 +10197,20 @@ main > div .playground .tiles {
   margin-bottom: 1rem;
   border-radius: 1rem;
 }
+@media only screen and (max-width: 575px) {
+  main > div .playground .tiles {
+    width: 8rem;
+    height: 8rem;
+  }
+}
 main > div .control {
   margin-top: 2rem;
   margin-left: 15rem;
+}
+@media only screen and (max-width: 575px) {
+  main > div .control {
+    margin-left: 0;
+  }
 }
 main > div .control i {
   font-size: 5rem;

@@ -2,34 +2,17 @@
 @use "../components/colors" as *;
 
 header nav .nav-bar {
-  // delete
-  //   padding: 10rem 5rem;
-  // border: 1px solid red;
-  // delete
-
   .logo {
     max-width: 15rem;
-    // border: 1px solid green;
-    // padding: 0 0 0 2rem;
 
     img {
       width: 10rem;
+      @media only screen and (max-width: 575px) {
+        width: 5rem;
+      }
     }
     h3 {
       color: $yellow-custom;
     }
   }
-
-  .col {
-    // border: 5px solid pink;
-  }
-  .control-panel {
-    // border: 5px solid blue;
-
-    // i {
-    //   font-size: 5rem;
-    // }
-  }
-
-  //   @include gradient;
 }
