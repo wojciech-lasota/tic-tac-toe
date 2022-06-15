@@ -1,9 +1,16 @@
 html {
   font-size: 62.5% !important;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background: linear-gradient(to right, rgba(20, 33, 61, 0.95), rgba(0, 0, 0, 0.95));
+}
+@media only screen and (max-width: 577px) {
+  body {
+    background: #14213d;
+  }
 }
 
 /*!
@@ -10144,6 +10151,11 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+@media only screen and (max-width: 575px) {
+  header nav .nav-bar {
+    box-shadow: none;
+  }
+}
 header nav .nav-bar .logo {
   max-width: 15rem;
 }

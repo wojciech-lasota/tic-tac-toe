@@ -2,6 +2,9 @@
 @use "../components/colors" as *;
 
 header nav .nav-bar {
+  @media only screen and (max-width: 575px) {
+    box-shadow: none;
+  }
   .logo {
     max-width: 15rem;
 
