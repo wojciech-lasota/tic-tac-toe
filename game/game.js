@@ -3,9 +3,13 @@ const gameBoard = (() => {
   //1 for player mark
   //-1 for computer mark
   let _board = new Array(9);
+  let isGameOver = false;
+  const resultDisplay = document.querySelector("#gameResult");
+  const resetBtn = document.querySelector(".reset-btn");
+  let intervalId;
+  let turns = 0;
 
-  //********** SETUP PLAYBOARD **********/
-  //add playgrounds buttons
+  //SETUP PLAYBOARD add buttons
   function addButtons() {
     const playground = document.querySelector(".playground");
     for (let i = 0; i < _board.length; i++) {
@@ -18,14 +22,24 @@ const gameBoard = (() => {
   }
   addButtons();
   const buttons = [...document.querySelectorAll(".tiles")]; //convert StaticNodeList to array
-  //add eventListener to buttons
-  //when its playerPl
+
   buttons.map((button) => {
     button.addEventListener("click", playerPlay);
   });
+  function resetGame() {
+    buttons.map((button) => {
+      button.innerHTML = "";
+      button.disabled = false;
+    });
+    // _board.map((el) => (el = 0));
+    _board = new Array(9);
+    isGameOver = false;
+    playerTurn = true;
+    resultDisplay.textContent = "";
+    turns = 0;
+  }
+  resetBtn.addEventListener("click", resetGame);
 
-  //variable that stores the setInterval method, after playerPlay its interrupt computerPlay
-  let intervalId;
   //   const winning_patern = [
   //     [0, 1, 2],
   //     [3, 4, 5],
@@ -36,9 +50,22 @@ const gameBoard = (() => {
   //     // [0, 4, 8],
   //     // [2, 4, 6],
   //   ];
-  let gameOver = false;
+
+  function gameOver(whoWon) {
+    clearInterval(intervalId);
+    isGameOver = true;
+    playerTurn = false;
+    whoWon == 0
+      ? (resultDisplay.textContent = "Draw!")
+      : whoWon > 0
+      ? (resultDisplay.textContent = "You Won!")
+      : (resultDisplay.textContent = "You Lose!");
+    buttons.map((button) => {
+      button.disabled = true;
+    });
+  }
   function checkWin() {
-    if (!gameOver) {
+    if (!isGameOver) {
       let colSum = 0;
       let rowSum = 0;
       let diagonalSum = 0;
@@ -58,12 +85,10 @@ const gameBoard = (() => {
           rowSum += _board[j];
           if (rowSum == 3) {
             console.log("player win");
-            gameOver = true;
-            playerTurn = false;
+            gameOver(1);
           } else if (rowSum == -3) {
             console.log("computer win");
-            gameOver = true;
-            playerTurn = false;
+            gameOver(-1);
           }
         }
         rowSum = 0;
@@ -75,12 +100,10 @@ const gameBoard = (() => {
           colSum += _board[j];
           if (colSum == 3) {
             console.log("player win");
-            gameOver = true;
-            playerTurn = false;
+            gameOver(1);
           } else if (colSum == -3) {
             console.log("computer win");
-            gameOver = true;
-            playerTurn = false;
+            gameOver(-1);
           }
         }
         colSum = 0;
@@ -98,16 +121,19 @@ const gameBoard = (() => {
         _board[2] + _board[4] + _board[6] == 3
       ) {
         console.log("player win");
-        gameOver = true;
-        playerTurn = false;
+        gameOver(1);
       } else if (
         _board[0] + _board[4] + _board[8] == -3 ||
         _board[2] + _board[4] + _board[6] == -3
       ) {
         console.log("computer win");
-        gameOver = true;
-        playerTurn = false;
+        gameOver(-1);
       }
+      //checking for draw
+      if (turns == 9 && !isGameOver) {
+        gameOver(0);
+      }
+      console.log(turns, " turns");
     }
   }
   let playerTurn = true;
@@ -116,9 +142,10 @@ const gameBoard = (() => {
   function playerPlay(e) {
     const tile = e.currentTarget;
     if (playerTurn) {
+      turns++;
+      playerTurn = false;
       tile.textContent = "x";
       tile.disabled = true;
-      playerTurn = false;
       _board[tile.id] = 1;
       checkWin();
       intervalId = setInterval(computerPlay, 1000);
@@ -126,7 +153,8 @@ const gameBoard = (() => {
   }
   function computerPlay() {
     clearInterval(intervalId);
-    if (!playerTurn && !gameOver) {
+    turns++;
+    if (!playerTurn && !isGameOver) {
       playerTurn = true;
 
       let computerChose = Math.floor(Math.random() * _board.length);

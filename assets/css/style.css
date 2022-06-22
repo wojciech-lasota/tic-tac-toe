@@ -10151,6 +10151,10 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+.reset-btn {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 575px) {
   header nav .nav-bar {
     box-shadow: none;
