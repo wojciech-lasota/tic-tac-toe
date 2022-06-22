@@ -8,6 +8,7 @@ const gameBoard = (() => {
   const resetBtn = document.querySelector(".reset-btn");
   let intervalId;
   let turns = 0;
+  let rotateValue = 0;
   const resultspanDisplay = document.querySelector(".result");
 
   //SETUP PLAYBOARD add buttons
@@ -28,6 +29,10 @@ const gameBoard = (() => {
     button.addEventListener("click", playerPlay);
   });
   function resetGame() {
+    rotateValue += 360;
+    resetBtn.style["transition-duration"] = "1s";
+    resetBtn.style.transform = `rotate(` + rotateValue + `deg)`;
+
     buttons.map((button) => {
       button.innerHTML = "";
       button.disabled = false;
