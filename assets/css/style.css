@@ -10155,11 +10155,6 @@ readers do not read off random characters that represent icons */
   cursor: pointer;
 }
 
-.rotateButton {
-  transform: rotate(360deg);
-  transition-duration: 1s;
-}
-
 @media only screen and (max-width: 575px) {
   header nav .nav-bar {
     box-shadow: none;
@@ -10275,6 +10270,10 @@ main > div .control i {
   .clicked {
     width: 27rem;
   }
+}
+
+body {
+  transition: al 1.5s linear;
 }
 
 /*# sourceMappingURL=style.css.map */

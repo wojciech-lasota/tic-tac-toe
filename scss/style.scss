@@ -5,3 +5,7 @@
 @use "sections/nav-bar";
 @use "sections/main";
 @use "sections/result";
+
+body {
+  transition: al 1.5s linear;
+}
