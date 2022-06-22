@@ -1,5 +1,6 @@
 @use "../components/colors" as *;
 .result {
+  margin-left: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +19,11 @@
   transition: all 1.5s linear;
 }
 .clicked {
+  margin-left: 0.5rem;
   width: 33rem;
+  @media only screen and (max-width: 575px) {
+    width: 27rem;
+  }
   text-align: center;
   font-size: 1.8rem;
   border-radius: 3rem;

@@ -10246,6 +10246,7 @@ main > div .control i {
 }
 
 .result {
+  margin-left: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10263,11 +10264,17 @@ main > div .control i {
 }
 
 .clicked {
+  margin-left: 0.5rem;
   width: 33rem;
   text-align: center;
   font-size: 1.8rem;
   border-radius: 3rem;
   background-color: #fca311;
+}
+@media only screen and (max-width: 575px) {
+  .clicked {
+    width: 27rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
