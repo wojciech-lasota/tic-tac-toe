@@ -10229,7 +10229,6 @@ main > div .playground .tiles {
 }
 main > div .control {
   margin-top: 2rem;
-  margin-left: 15rem;
 }
 @media only screen and (max-width: 575px) {
   main > div .control {
@@ -10239,6 +10238,31 @@ main > div .control {
 main > div .control i {
   font-size: 5rem;
   color: #fca311;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 33rem;
+  text-align: center;
+  font-size: 1.8rem;
+  border-radius: 3rem;
+  transition: all 1.5s linear;
+}
+@media only screen and (max-width: 575px) {
+  .result {
+    width: 26rem;
+  }
+}
+
+.clicked {
+  width: 33rem;
+  text-align: center;
+  font-size: 1.8rem;
+  border-radius: 3rem;
+  background-color: #fca311;
 }
 
 /*# sourceMappingURL=style.css.map */

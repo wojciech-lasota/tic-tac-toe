@@ -8,6 +8,7 @@ const gameBoard = (() => {
   const resetBtn = document.querySelector(".reset-btn");
   let intervalId;
   let turns = 0;
+  const resultspanDisplay = document.querySelector(".result");
 
   //SETUP PLAYBOARD add buttons
   function addButtons() {
@@ -35,23 +36,20 @@ const gameBoard = (() => {
     _board = new Array(9);
     isGameOver = false;
     playerTurn = true;
-    resultDisplay.textContent = "";
+
     turns = 0;
+    setTimeout(() => {
+      resultspanDisplay.classList.remove(`clicked`);
+    }, 1000);
+    setTimeout(() => {
+      //   resultDisplay.textContent = ` `;
+      resultDisplay.innerHTML = "";
+    }, 1900);
   }
   resetBtn.addEventListener("click", resetGame);
 
-  //   const winning_patern = [
-  //     [0, 1, 2],
-  //     [3, 4, 5],
-  //     // [6, 7, 8],
-  //     // [0, 3, 6],
-  //     // [1, 4, 7],
-  //     // [2, 5, 8],
-  //     // [0, 4, 8],
-  //     // [2, 4, 6],
-  //   ];
-
   function gameOver(whoWon) {
+    resultspanDisplay.classList.add("clicked");
     clearInterval(intervalId);
     isGameOver = true;
     playerTurn = false;
