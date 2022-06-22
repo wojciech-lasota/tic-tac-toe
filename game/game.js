@@ -1,3 +1,7 @@
+import Board from "./board.js";
+const board = new Board();
+console.log(board);
+
 const gameBoard = (() => {
   //An array that store the  state of the game
   //1 for player mark
