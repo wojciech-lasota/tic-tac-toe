@@ -1,11 +1,11 @@
 export default class Board {
-  constructor(board = [...Array(9).fill("")]) {
-    this.board = board;
+  constructor(boardState = [...Array(9).fill("")]) {
+    this.boardState = boardState;
   }
-  //Function for displaying the board in the console
+  //Function for displaying the boardState in the console
   printFormattedBoard() {
     let formattedString = "";
-    this.board.forEach((cell, index) => {
+    this.boardState.forEach((cell, index) => {
       formattedString += cell ? ` ${cell} |` : "   |";
       if ((index + 1) % 3 === 0) {
         formattedString = formattedString.slice(0, -1);
@@ -16,96 +16,97 @@ export default class Board {
     });
     console.log("%c" + formattedString, "color: #c11dd4;font-size:16px");
   }
-  //lists the indexes of available spots in the board
+  //lists the indexes of available spots in the boardState
   availableSpots() {
     const freeSpace = [];
-    return this.board.forEach((value, index) => {
+    this.boardState.forEach((value, index) => {
       if (!value) {
         freeSpace.push(index);
       }
     });
+    return freeSpace;
   }
   isEmpty() {
-    return this.board.every((tiles) => !tiles);
+    return this.boardState.every((tiles) => !tiles);
   }
   isFull() {
-    return this.board.every((tiles) => tiles);
+    return this.boardState.every((tiles) => tiles);
   }
-  //checking the state of the board
+  //checking the state of the boardState
   winsChecking() {
     if (this.isEmpty()) {
       return false;
     }
     //checking winner in rows
     if (
-      this.board[0] &&
-      this.board[0] === this.board[1] &&
-      this.board[0] === this.board[2]
+      this.boardState[0] &&
+      this.boardState[0] === this.boardState[1] &&
+      this.boardState[0] === this.boardState[2]
     ) {
-      return { winner: this.board[0] };
+      return { winner: this.boardState[0] };
     }
     if (
-      this.board[3] &&
-      this.board[3] === this.board[4] &&
-      this.board[3] === this.board[5]
+      this.boardState[3] &&
+      this.boardState[3] === this.boardState[4] &&
+      this.boardState[3] === this.boardState[5]
     ) {
-      return { winner: this.board[3] };
+      return { winner: this.boardState[3] };
     }
     if (
-      this.board[6] &&
-      this.board[6] === this.board[7] &&
-      this.board[6] === this.board[7]
+      this.boardState[6] &&
+      this.boardState[6] === this.boardState[7] &&
+      this.boardState[6] === this.boardState[7]
     ) {
-      return { winner: this.board[6] };
+      return { winner: this.boardState[6] };
     }
     //checking winner in columns
     if (
-      this.board[0] &&
-      this.board[0] === this.board[3] &&
-      this.board[0] === this.board[6]
+      this.boardState[0] &&
+      this.boardState[0] === this.boardState[3] &&
+      this.boardState[0] === this.boardState[6]
     ) {
-      return { winner: this.board[0] };
+      return { winner: this.boardState[0] };
     }
     if (
-      this.board[1] &&
-      this.board[1] === this.board[4] &&
-      this.board[1] === this.board[7]
+      this.boardState[1] &&
+      this.boardState[1] === this.boardState[4] &&
+      this.boardState[1] === this.boardState[7]
     ) {
-      return { winner: this.board[1] };
+      return { winner: this.boardState[1] };
     }
     if (
-      this.board[2] &&
-      this.board[2] === this.board[5] &&
-      this.board[2] === this.board[8]
+      this.boardState[2] &&
+      this.boardState[2] === this.boardState[5] &&
+      this.boardState[2] === this.boardState[8]
     ) {
-      return { winner: this.board[2] };
+      return { winner: this.boardState[2] };
     }
     //checking winner in diagonals
     if (
-      this.board[0] &&
-      this.board[0] === this.board[4] &&
-      this.board[0] === this.board[8]
+      this.boardState[0] &&
+      this.boardState[0] === this.boardState[4] &&
+      this.boardState[0] === this.boardState[8]
     ) {
-      return { winner: this.board[0] };
+      return { winner: this.boardState[0] };
     }
     if (
-      this.board[2] &&
-      this.board[2] === this.board[5] &&
-      this.board[2] === this.board[6]
+      this.boardState[2] &&
+      this.boardState[2] === this.boardState[5] &&
+      this.boardState[2] === this.boardState[6]
     ) {
-      return { winner: this.board[2] };
+      return { winner: this.boardState[2] };
     }
     //checking for a draw
-    if (this.board.isFull()) {
+    if (this.isFull()) {
       return { winner: "draw" };
     }
     return false;
   }
   insert(symbol, index) {
-    if (this.board[index]) {
+    if (this.boardState[index]) {
       return false;
     }
-    this.board[index] = symbol;
+    this.boardState[index] = symbol;
   }
   //End of the class
 }

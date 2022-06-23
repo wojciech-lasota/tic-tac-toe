@@ -1,3 +1,20 @@
 import Board from "./board.js";
-const board = new Board(["", "", "", "", "", "", "", "", "x"]);
+import Player from "./player.js";
+
+const board = new Board(["x", "o", "", "", "", "", "o", "", "x"]);
 board.printFormattedBoard();
+const p = new Player();
+console.log(p.getBestMove(board));
+console.log(p.nodeMap);
+board.insert("x", 7);
+board.printFormattedBoard();
+console.log(p.getBestMove(board, false));
+console.log(p.nodeMap);
+board.insert("o", 4);
+board.printFormattedBoard();
+console.log(p.getBestMove(board));
+console.log(p.nodeMap);
+board.insert("x", 2);
+board.printFormattedBoard();
+console.log(p.getBestMove(board, false));
+console.log(p.nodeMap);
