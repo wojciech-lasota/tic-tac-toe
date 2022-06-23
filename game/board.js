@@ -3,47 +3,66 @@ class Board {
   constructor(state = [...Array(3)].map((row) => Array(3).fill(null))) {
     this.state = state;
   }
-  /**
-   * Put a new sign [x,o]
-   * @param {String} sign
-   * @param {Number} index
-   * @returns {Boolean}
-   */
-  isEmpty() {
-    return this.state.every((element) => !element);
-  }
-  isFull() {
-    return this.state.every((cell) => {
-      cell;
-    });
-  }
-  putASing(sign, index) {
-    //if the space is already used
-    if (this.state[index]) {
-      return false;
-    }
-    this.state[index] = sign;
-    return true;
-  }
-  //return an array with available moves
-  availableMoves() {
-    const availableMoves = [];
-    this.state.filter((value, index) => {
-      if (!value) {
-        availableMoves.push(index);
+  //Logs a visualized board with the current state to the console
+  printFormattedBoard() {
+    let formattedString = "";
+    this.state.forEach((cell, index) => {
+      formattedString += cell ? ` ${cell} |` : "   |";
+      if ((index + 1) % 3 === 0) {
+        formattedString = formattedString.slice(0, -1);
+        if (index < 8)
+          formattedString +=
+            "\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n";
       }
     });
+    console.log("%c" + formattedString, "color: #c11dd4;font-size:16px");
+  }
+  //Checks if board has no symbols yet
+  isEmpty() {
+    return this.state.every((cell) => !cell);
+  }
+  //Check if board has no spaces available
+  isFull() {
+    return this.state.every((cell) => cell);
   }
   /**
-   * check if anyone won
-   * @returns {Object} with the winner
+   * Inserts a new symbol(x,o) into
+   * @param {String} symbol
+   * @param {Number} position
+   * @return {Boolean} boolean represent success of the operation
    */
-  gameState() {
+  insert(symbol, position) {
+    if (![0, 1, 2, 3, 4, 5, 6, 7, 8].includes(position)) {
+      throw new Error(`Cell index ${position} does not exist!`);
+    }
+    if (!["x", "o"].includes(symbol)) {
+      throw new Error("The symbol can only be x or o!");
+    }
+    if (this.state[position]) {
+      return false;
+    }
+    this.state[position] = symbol;
+    return true;
+  }
+  //Returns an array containing available moves for the current state
+  getAvailableMoves() {
+    const moves = [];
+    this.state.forEach((cell, index) => {
+      if (!cell) moves.push(index);
+    });
+    return moves;
+  }
+  /**
+   * Checks if the board has a terminal state ie. a player wins or the board is full with no winner
+   * @return {Object} an object containing the winner, direction of winning and row number
+   */
+  isTerminal() {
+    //Return False if board in empty
     if (this.isEmpty()) return false;
-    // checking rows
+    //Checking Horizontal Wins
     if (
       this.state[0] === this.state[1] &&
-      this.state[1] === this.state[2] &&
+      this.state[0] === this.state[2] &&
       this.state[0]
     ) {
       return { winner: this.state[0], direction: "H", row: 1 };
@@ -62,7 +81,8 @@ class Board {
     ) {
       return { winner: this.state[6], direction: "H", row: 3 };
     }
-    // checking columns
+
+    //Checking Vertical Wins
     if (
       this.state[0] === this.state[3] &&
       this.state[0] === this.state[6] &&
@@ -84,7 +104,8 @@ class Board {
     ) {
       return { winner: this.state[2], direction: "V", column: 3 };
     }
-    //checking diagonals
+
+    //Checking Diagonal Wins
     if (
       this.state[0] === this.state[4] &&
       this.state[0] === this.state[8] &&
@@ -99,10 +120,13 @@ class Board {
     ) {
       return { winner: this.state[2], direction: "D", diagonal: "counter" };
     }
-    //checking for draw
+
+    //If no winner but the board is full, then it's a draw
     if (this.isFull()) {
       return { winner: "draw" };
     }
+
+    //return false otherwise
     return false;
   }
 }
