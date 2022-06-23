@@ -1,18 +1,17 @@
-import Board from "./board";
+import Board from "./board.js";
 
 export default class Player {
   constructor(maxDepth = -1) {
     this.maxDepth = maxDepth;
     this.nodesMap = new Map();
   }
-
   getBestMove(board, maximizing = true, callback = () => {}, depth = 0) {
     //clear nodesMap if the function is called for a new move
     if (depth == 0) this.nodesMap.clear();
 
-    //if the board state is a terminal one, return the heuristic value
+    //If the board state is a terminal one, return the heuristic value
     if (board.isTerminal() || depth === this.maxDepth) {
-      if (board.isTerminal().winner == "x") {
+      if (board.isTerminal().winner === "x") {
         return 100 - depth;
       } else if (board.isTerminal().winner === "o") {
         return -100 + depth;
@@ -59,6 +58,7 @@ export default class Player {
       //If not main call (recursive) return the heuristic value for next calculation
       return best;
     }
+
     if (!maximizing) {
       //Initialize best to the highest possible value
       let best = 100;
