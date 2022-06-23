@@ -42,7 +42,8 @@ function newGame(depth = -1, startingPlayer = 1) {
     htmlCells[index].addEventListener(
       "click",
       () => {
-        //If cell is already occupied or the board is in a terminal state or it's not humans turn, return false
+        //If cell is already occupied or the board is in a terminal state
+        //or it's not humans turn, return false
         if (
           hasClass(htmlCells[index], "x") ||
           hasClass(htmlCells[index], "o") ||
