@@ -1,0 +1,26 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game you can play in your browser,",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass --watch scss/style.scss assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wojciech-lasota/tic-tac-toe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wojciech-lasota/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/wojciech-lasota/tic-tac-toe#readme",
+  "devDependencies": {
+    "sass": "^1.53.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss-cli": "^9.1.0"
+  }
+}
