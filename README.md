@@ -4,7 +4,8 @@ Tic Tac Toe game you can play in your browser,
 
 https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe
 
-I use the Minimax Algorithm to find the most optimal move in the game (best possible move). You can learn more about the algorithm from the blog itself or from the website
+I use the Minimax Algorithm to find the most optimal move in the game (best possible move). You can learn more about the algorithm from the website
+
 https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/
 
 Live preview:
