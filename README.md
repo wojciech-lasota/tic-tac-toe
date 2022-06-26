@@ -8,6 +8,12 @@ I use the Minimax Algorithm to find the most optimal move in the game (best poss
 
 https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/
 
+Based on course:
+
+
+https://www.alialaa.dev/blog/tic-tac-toe-js-ui
+
+
 Live preview:
 
 https://wojciech-lasota.github.io/tic-tac-toe/
