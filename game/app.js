@@ -85,6 +85,20 @@ function newGame(depth = -1, startingPlayer = 1) {
           console.log(board.boardState);
           console.log(board.winsChecking().winner);
           if (board.winsChecking().winner == "x") {
+            alertDisplay.classList.add("alert-success");
+            alertDisplay.textContent = "You Won!";
+            setTimeout(() => {
+              alertDisplay.classList.remove(`alert-success`);
+              alertDisplay.textContent = ".";
+            }, 1200);
+          }
+          if (board.winsChecking().winner == "draw") {
+            alertDisplay.classList.add("alert-success");
+            alertDisplay.textContent = "Its Draw!";
+            setTimeout(() => {
+              alertDisplay.classList.remove(`alert-success`);
+              alertDisplay.textContent = ".";
+            }, 1200);
           }
           board.printFormattedBoard();
         }
@@ -110,6 +124,14 @@ function newGame(depth = -1, startingPlayer = 1) {
                 alertDisplay.classList.remove(`alert-failure`);
                 alertDisplay.textContent = ".";
               }, 1200);
+              if (board.winsChecking().winner == "draw") {
+                alertDisplay.classList.add("alert-failure");
+                alertDisplay.textContent = "Its Draw!";
+                setTimeout(() => {
+                  alertDisplay.classList.remove(`alert-success`);
+                  alertDisplay.textContent = ".";
+                }, 1200);
+              }
             }
           }
           playerTurn = 1; //Switch turns

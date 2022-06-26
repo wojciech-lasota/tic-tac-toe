@@ -151,20 +151,26 @@ body.active .burger i {
   }
 }
 .controls {
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 .controls button {
   margin-top: 5rem;
 }
 
 #board {
-  margin-top: 10rem;
+  margin-top: 5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   max-width: 26rem;
   min-width: 26rem;
+}
+#board .cells-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 #board button {
   min-width: 8rem !important;
@@ -178,6 +184,10 @@ body.active .burger i {
 }
 
 .winnerdisplay {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   width: 100%;
   min-height: 3rem;
   text-align: center;
@@ -189,10 +199,12 @@ body.active .burger i {
 
 .alert-failure {
   color: #721c24;
+  background-color: #d85360;
 }
 
 .alert-success {
   color: #155724;
+  background-color: #d4edda;
 }
 
 /*# sourceMappingURL=style.css.map */
