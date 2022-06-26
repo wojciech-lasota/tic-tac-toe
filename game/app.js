@@ -89,7 +89,7 @@ function newGame(depth = -1, startingPlayer = 1) {
             alertDisplay.textContent = "You Won!";
             setTimeout(() => {
               alertDisplay.classList.remove(`alert-success`);
-              alertDisplay.textContent = ".";
+              alertDisplay.textContent = "";
             }, 1200);
           }
           if (board.winsChecking().winner == "draw") {
@@ -97,7 +97,7 @@ function newGame(depth = -1, startingPlayer = 1) {
             alertDisplay.textContent = "Its Draw!";
             setTimeout(() => {
               alertDisplay.classList.remove(`alert-success`);
-              alertDisplay.textContent = ".";
+              alertDisplay.textContent = "";
             }, 1200);
           }
           board.printFormattedBoard();
@@ -122,14 +122,14 @@ function newGame(depth = -1, startingPlayer = 1) {
               alertDisplay.textContent = "You Lose!";
               setTimeout(() => {
                 alertDisplay.classList.remove(`alert-failure`);
-                alertDisplay.textContent = ".";
+                alertDisplay.textContent = "";
               }, 1200);
               if (board.winsChecking().winner == "draw") {
                 alertDisplay.classList.add("alert-failure");
                 alertDisplay.textContent = "Its Draw!";
                 setTimeout(() => {
                   alertDisplay.classList.remove(`alert-success`);
-                  alertDisplay.textContent = ".";
+                  alertDisplay.textContent = "";
                 }, 1200);
               }
             }
