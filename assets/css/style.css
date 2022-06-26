@@ -20,7 +20,7 @@
   }
 }
 #toggle.active {
-  background: linear-gradient(to top, #4b134f, #c94b4b);
+  background-color: #005bc4;
   transition: 0.5s linear;
 }
 #toggle .indicator {
@@ -64,7 +64,7 @@
   transition: left 0.5s;
 }
 #toggle .cloud i {
-  color: blue;
+  color: #005bc4;
   font-size: 2rem;
   transform: scale(0.9);
 }
@@ -80,7 +80,7 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: 1.6rem !important;
 }
 
 body {
@@ -92,15 +92,20 @@ body {
 body.active {
   background: #2b2b2b;
   transition: background-color 0.2s linear;
+  color: #005bc4;
+}
+body.active button {
+  background-color: #005bc4;
+  color: white;
 }
 
 .topnav {
-  border: 1px solid red;
+  height: 10rem;
   padding: 2rem 1rem 2rem 2rem;
 }
 .topnav a {
-  color: #c94b4b;
   font-weight: 800;
+  margin-left: 1rem;
   text-align: center;
   text-decoration: none;
 }
@@ -134,6 +139,45 @@ body.active {
     display: block;
     text-align: left;
   }
+}
+.controls {
+  margin-top: 10rem;
+}
+.controls button {
+  margin-top: 5rem;
+}
+
+#board {
+  margin-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 26rem;
+  min-width: 26rem;
+}
+#board button {
+  min-width: 8rem !important;
+  min-height: 8rem !important;
+  font-size: 4rem;
+  margin-bottom: 0.3rem;
+}
+
+.winnerdisplay {
+  width: 100%;
+  min-height: 3rem;
+  text-align: center;
+  color: white;
+  text-transform: capitalize;
+  border-radius: 3rem;
+  transition: all 0.5s linear;
+}
+
+.alert-failure {
+  color: #721c24;
+}
+
+.alert-success {
+  color: #155724;
 }
 
 /*# sourceMappingURL=style.css.map */

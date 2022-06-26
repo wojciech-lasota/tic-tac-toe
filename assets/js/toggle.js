@@ -7,4 +7,5 @@ toggle.onclick = () => {
   body.classList.toggle("active");
   icon.classList.toggle("active");
   cloud.classList.toggle("active");
+  document.body.toggle("active");
 };

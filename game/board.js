@@ -1,5 +1,6 @@
 export default class Board {
-  constructor(boardState = [...Array(9).fill("")]) {
+  //Initializing the board
+  constructor(boardState = ["", "", "", "", "", "", "", "", ""]) {
     this.boardState = boardState;
   }
   //Function for displaying the boardState in the console
@@ -32,81 +33,94 @@ export default class Board {
   isFull() {
     return this.boardState.every((tiles) => tiles);
   }
-  //checking the state of the boardState
+  //checking the boardState of the boardState
   winsChecking() {
-    if (this.isEmpty()) {
-      return false;
-    }
-    //checking winner in rows
+    if (this.isEmpty()) return false;
+    //Checking Horizontal Wins
     if (
-      this.boardState[0] &&
       this.boardState[0] === this.boardState[1] &&
-      this.boardState[0] === this.boardState[2]
+      this.boardState[0] === this.boardState[2] &&
+      this.boardState[0]
     ) {
       return { winner: this.boardState[0] };
     }
     if (
-      this.boardState[3] &&
       this.boardState[3] === this.boardState[4] &&
-      this.boardState[3] === this.boardState[5]
+      this.boardState[3] === this.boardState[5] &&
+      this.boardState[3]
     ) {
       return { winner: this.boardState[3] };
     }
     if (
-      this.boardState[6] &&
       this.boardState[6] === this.boardState[7] &&
-      this.boardState[6] === this.boardState[7]
+      this.boardState[6] === this.boardState[8] &&
+      this.boardState[6]
     ) {
       return { winner: this.boardState[6] };
     }
-    //checking winner in columns
+
+    //Checking Vertical Wins
     if (
-      this.boardState[0] &&
       this.boardState[0] === this.boardState[3] &&
-      this.boardState[0] === this.boardState[6]
+      this.boardState[0] === this.boardState[6] &&
+      this.boardState[0]
     ) {
       return { winner: this.boardState[0] };
     }
     if (
-      this.boardState[1] &&
       this.boardState[1] === this.boardState[4] &&
-      this.boardState[1] === this.boardState[7]
+      this.boardState[1] === this.boardState[7] &&
+      this.boardState[1]
     ) {
       return { winner: this.boardState[1] };
     }
     if (
-      this.boardState[2] &&
       this.boardState[2] === this.boardState[5] &&
-      this.boardState[2] === this.boardState[8]
+      this.boardState[2] === this.boardState[8] &&
+      this.boardState[2]
     ) {
       return { winner: this.boardState[2] };
     }
-    //checking winner in diagonals
+
+    //Checking Diagonal Wins
     if (
-      this.boardState[0] &&
       this.boardState[0] === this.boardState[4] &&
-      this.boardState[0] === this.boardState[8]
+      this.boardState[0] === this.boardState[8] &&
+      this.boardState[0]
     ) {
       return { winner: this.boardState[0] };
     }
     if (
-      this.boardState[2] &&
-      this.boardState[2] === this.boardState[5] &&
-      this.boardState[2] === this.boardState[6]
+      this.boardState[2] === this.boardState[4] &&
+      this.boardState[2] === this.boardState[6] &&
+      this.boardState[2]
     ) {
-      return { winner: this.boardState[2] };
+      return {
+        winner: this.boardState[2],
+      };
     }
-    //checking for a draw
+
+    //If no winner but the board is full, then it's a draw
     if (this.isFull()) {
       return { winner: "draw" };
     }
+
+    //return false otherwise
     return false;
   }
+
   insert(symbol, index) {
+    if (![0, 1, 2, 3, 4, 5, 6, 7, 8].includes(index)) {
+      throw new Error(`Cell index ${index} does not exist!`);
+    }
+    if (!["x", "o"].includes(symbol)) {
+      throw new Error("The symbol can only be x or o!");
+    }
     if (this.boardState[index]) {
       return false;
     }
     this.boardState[index] = symbol;
+    return true;
   }
   //End of the class
 }

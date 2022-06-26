@@ -22,7 +22,7 @@
     inset 0 -1rem 1rem 1rem rgba(0, 0, 0, 0.1);
 
   &.active {
-    @include gradientToTop($primary-gradient, 1, $secondary-gradient, 1);
+    background-color: #005bc4;
     transition: 0.5s linear;
   }
   .indicator {
@@ -66,7 +66,7 @@
       transition: left 0.5s;
     }
     i {
-      color: blue;
+      color: #005bc4;
       font-size: 2rem;
       transform: scale(0.9);
     }

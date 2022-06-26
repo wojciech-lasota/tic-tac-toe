@@ -32,7 +32,7 @@ export default class Player {
     }
     //if maximizing player turn
     if (maximizing) {
-      let best = -Number.MIN_VALUE;
+      let best = -100;
       board.availableSpots().forEach((availableSpot) => {
         //child in the sense of the tree's data structure
         const child = new Board([...board.boardState]);
@@ -55,24 +55,26 @@ export default class Player {
       });
       //main call case
       if (depth == 0) {
-        let randomIndex;
-        //indices have the same value so we are going to random index
-        if (typeof this.nodeMap.get(best) == "string") {
-          const array = this.nodeMap.get(best).split(",");
-          const randomChose = Math.floor(Math.random() * array.length);
-          randomIndex = array[randomChose];
+        let returnValue;
+        if (typeof this.nodesMap.get(best) == "string") {
+          const arr = this.nodesMap.get(best).split(",");
+          //indices have the same value so we are going to random index
+          const rand = Math.floor(Math.random() * arr.length);
+          returnValue = arr[rand];
         } else {
-          randomIndex = this.nodeMap.get(best);
+          returnValue = this.nodesMap.get(best);
         }
-        callback(randomIndex);
-        return randomIndex;
+        //run a callback after calculation and return the index
+        callback(returnValue);
+        return returnValue;
       }
+
       return best;
     }
 
     //if minimizing player turn
     if (!maximizing) {
-      let best = -Number.MIN_VALUE;
+      let best = 100;
       board.availableSpots().forEach((availableSpot) => {
         //child in the sense of the tree's data structure
         const child = new Board([...board.boardState]);

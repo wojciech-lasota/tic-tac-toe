@@ -20,7 +20,7 @@
   }
 }
 #toggle.active {
-  background: linear-gradient(to top, #4b134f, #c94b4b);
+  background-color: #005bc4;
   transition: 0.5s linear;
 }
 #toggle .indicator {
@@ -64,7 +64,7 @@
   transition: left 0.5s;
 }
 #toggle .cloud i {
-  color: blue;
+  color: #005bc4;
   font-size: 2rem;
   transform: scale(0.9);
 }
