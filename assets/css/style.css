@@ -98,6 +98,13 @@ body.active button {
   background-color: #005bc4;
   color: white;
 }
+body.active #button i {
+  font-size: 5rem !important;
+  color: #005bc4;
+}
+body.active .burger i {
+  color: #005bc4;
+}
 
 .topnav {
   height: 10rem;
@@ -123,6 +130,9 @@ body.active button {
     float: right;
     display: block;
   }
+}
+.topnav .burger i {
+  color: #23272b;
 }
 
 @media screen and (max-width: 600px) {
@@ -151,6 +161,7 @@ body.active button {
   margin-top: 10rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   max-width: 26rem;
   min-width: 26rem;
@@ -160,6 +171,10 @@ body.active button {
   min-height: 8rem !important;
   font-size: 4rem;
   margin-bottom: 0.3rem;
+}
+#board i {
+  cursor: pointer;
+  font-size: 5rem !important;
 }
 
 .winnerdisplay {

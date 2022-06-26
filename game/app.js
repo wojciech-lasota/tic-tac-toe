@@ -41,6 +41,7 @@ function newGame(depth = -1, startingPlayer = 1) {
     <button type="button" class="btn btn-outline-dark cell-6"></button>
     <button type="button" class="btn btn-outline-dark cell-7"></button>
     </div>
+    
   `;
   const htmlCells = [...boardDIV.querySelector(".cells-wrap").children];
   console.log(boardDIV.firstElementChild);
@@ -133,4 +134,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const depth = depthDIV.options[depthDIV.selectedIndex].value;
     newGame(depth, starting);
   });
+  let deg = 0;
 });

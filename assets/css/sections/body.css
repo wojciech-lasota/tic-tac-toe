@@ -13,5 +13,12 @@ body.active button {
   background-color: #005bc4;
   color: white;
 }
+body.active #button i {
+  font-size: 5rem !important;
+  color: #005bc4;
+}
+body.active .burger i {
+  color: #005bc4;
+}
 
 /*# sourceMappingURL=body.css.map */

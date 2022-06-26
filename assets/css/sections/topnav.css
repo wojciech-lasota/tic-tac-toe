@@ -23,6 +23,9 @@
     display: block;
   }
 }
+.topnav .burger i {
+  color: #23272b;
+}
 
 @media screen and (max-width: 600px) {
   .topnav.responsive {
