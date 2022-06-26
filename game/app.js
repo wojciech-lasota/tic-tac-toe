@@ -54,3 +54,4 @@ funkcja nowa gra(depth-1,kto zaczyna gre 1 czlowiek,0 komputer){
         }, false);
         
 }
+*/

@@ -9,27 +9,28 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
 </head>
 <nav>
+
     <div class="topnav" id="myTopnav">
         <a href="index.html">Game</a>
         <a href="#">About</a>
-        <a href="#" class="icon" onclick="myFunction()">
+        <a href="#" class="icon" onclick="hamburgerMenu()">
             <i class="fa fa-bars"></i>
         </a>
-        <script>function myFunction() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            }</script>
+        <!-- //toogle button dark and light mode -->
+        <div id="toggle" class="toggle">
+            <span class="cloud"><i class="fa-solid fa-cloud"></i></span>
+            <span class="sun"><i class="fa-solid fa-sun"></i></span>
+            <i class="indicator"></i>
+        </div>
     </div>
 </nav>
 
 <body>
-
+    <script src="assets/js/toggle.js"></script>
+    <script src="assets/js/hamburgerMenu.js"></script>
     <script type="module" src="game/app.js"></script>
 </body>
 

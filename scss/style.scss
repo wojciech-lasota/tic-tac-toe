@@ -1,3 +1,9 @@
+// //fonts
+// @use "fontawesome.scss";
+//import components
+@use "components/toggle.scss";
 //import the sections
+
 @use "sections/html.scss";
+@use "sections/body.scss";
 @use "sections/topnav.scss";

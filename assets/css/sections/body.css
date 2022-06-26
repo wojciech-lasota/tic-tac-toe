@@ -1,0 +1,12 @@
+body {
+  min-height: 100vh;
+  background-color: #fff;
+  transition: background-color 0.2s linear;
+}
+
+body.active {
+  background: #2b2b2b;
+  transition: background-color 0.2s linear;
+}
+
+/*# sourceMappingURL=body.css.map */

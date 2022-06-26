@@ -1,0 +1,13 @@
+//  background: linear-gradient(
+// to top,
+// #4b134f,
+// #c94b4b
+//   );
+//
+@mixin gradientToTop($color1, $opacity1, $color2, $opacity2) {
+  background: linear-gradient(
+    to top,
+    rgba($color1, $opacity1),
+    rgba($color2, $opacity2)
+  );
+}
