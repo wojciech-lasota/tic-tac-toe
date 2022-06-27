@@ -56,13 +56,13 @@ export default class Player {
       //main call case
       if (depth == 0) {
         let returnValue;
-        if (typeof this.nodesMap.get(best) == "string") {
-          const arr = this.nodesMap.get(best).split(",");
+        if (typeof this.nodeMap.get(best) == "string") {
+          const arr = this.nodeMap.get(best).split(",");
           //indices have the same value so we are going to random index
           const rand = Math.floor(Math.random() * arr.length);
           returnValue = arr[rand];
         } else {
-          returnValue = this.nodesMap.get(best);
+          returnValue = this.nodeMap.get(best);
         }
         //run a callback after calculation and return the index
         callback(returnValue);

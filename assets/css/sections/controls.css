@@ -1,8 +1,17 @@
 .controls {
   margin-top: 5rem;
 }
+.controls .control_wrap {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  height: 6rem;
+}
 .controls button {
-  margin-top: 5rem;
+  margin-right: 5rem;
+}
+.controls .cstmSwitch {
+  margin-left: 2.6rem;
 }
 
 /*# sourceMappingURL=controls.css.map */

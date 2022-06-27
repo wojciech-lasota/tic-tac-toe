@@ -21,7 +21,7 @@ import { drawWinningLine, hasClass, addClass } from "./helpers.js";
 // console.log(p.getBestMove(board, false));
 // console.log(p.nodeMap);
 
-function newGame(depth = -1, startingPlayer = 1) {
+function newGame(depth = -1, startingPlayer = 1, mode) {
   const player = new Player(parseInt(depth));
   const board = new Board(["", "", "", "", "", "", "", "", ""]);
 
@@ -44,20 +44,22 @@ function newGame(depth = -1, startingPlayer = 1) {
     
   `;
   const htmlCells = [...boardDIV.querySelector(".cells-wrap").children];
-  console.log(boardDIV.firstElementChild);
+
   const alertDisplay = boardDIV.firstElementChild;
 
   const starting = parseInt(startingPlayer),
     maximizing = starting;
   let playerTurn = starting;
+
   if (!starting) {
     const centerAndCorners = [0, 2, 4, 6, 8];
     const firstChoice =
       centerAndCorners[Math.floor(Math.random() * centerAndCorners.length)];
     const symbol = !maximizing ? "x" : "o";
     board.insert(symbol, firstChoice);
+
     htmlCells[firstChoice].textContent = symbol;
-    // addClass(htmlCells[firstChoice], symbol);
+
     playerTurn = 1; //Switch turns
   }
 
@@ -73,12 +75,13 @@ function newGame(depth = -1, startingPlayer = 1) {
           !playerTurn
         )
           return false;
+
         const symbol = maximizing ? "x" : "o"; //Maximizing player is always 'x'
         //Update the Board class instance as well as the Board UI
+
         board.insert(symbol, index);
         htmlCells[index].textContent = symbol;
 
-        // addClass(htmlCells[index], symbol);
         //If it's a terminal move and it's not a draw, then human won
 
         if (board.winsChecking()) {
@@ -92,6 +95,7 @@ function newGame(depth = -1, startingPlayer = 1) {
               alertDisplay.textContent = "";
             }, 1200);
           }
+          console.log(player.nodeMap);
           if (board.winsChecking().winner == "draw") {
             alertDisplay.classList.add("alert-success");
             alertDisplay.textContent = "Its Draw!";
@@ -102,17 +106,18 @@ function newGame(depth = -1, startingPlayer = 1) {
           }
           board.printFormattedBoard();
         }
+
+        // console.log(player.getBestMove(board));
+        // console.log(player.nodeMap);
         playerTurn = 0; //Switch turns
         //Get computer's best move and update the UI
+
         player.getBestMove(board, !maximizing, (best) => {
           const symbol = !maximizing ? "x" : "o";
           board.insert(symbol, parseInt(best));
 
           htmlCells[best].textContent = symbol;
-
-          //   addClass(htmlCells[best], symbol);
-          //   console.log(board.winsChecking());
-          //   console.log(Array.from(board.boardState));
+          console.log(player.nodeMap);
           if (board.winsChecking()) {
             console.log(board.boardState);
             console.log(board.winsChecking().winner);
@@ -128,7 +133,7 @@ function newGame(depth = -1, startingPlayer = 1) {
                 alertDisplay.classList.add("alert-failure");
                 alertDisplay.textContent = "Its Draw!";
                 setTimeout(() => {
-                  alertDisplay.classList.remove(`alert-success`);
+                  alertDisplay.classList.remove(`alert-failure`);
                   alertDisplay.textContent = "";
                 }, 1200);
               }
@@ -139,6 +144,7 @@ function newGame(depth = -1, startingPlayer = 1) {
       },
       false
     );
+
     if (cell) {
       htmlCells[index].textContent = cell;
       //   addClass(htmlCells[index], cell);
@@ -148,13 +154,16 @@ function newGame(depth = -1, startingPlayer = 1) {
 document.addEventListener("DOMContentLoaded", () => {
   const depth = -1;
   const startingPlayer = 1;
-  newGame(depth, startingPlayer);
+  const eazyMode = document.querySelector("#flexSwitchCheckDefault").checked;
+  newGame(depth, startingPlayer, eazyMode);
+
   document.getElementById("newGame").addEventListener("click", () => {
     const startingDIV = document.getElementById("starting");
     const starting = startingDIV.options[startingDIV.selectedIndex].value;
     const depthDIV = document.getElementById("depth");
     const depth = depthDIV.options[depthDIV.selectedIndex].value;
-    newGame(depth, starting);
+    const eazyMode = document.querySelector("#flexSwitchCheckDefault").checked;
+    newGame(depth, starting, eazyMode);
   });
   let deg = 0;
 });

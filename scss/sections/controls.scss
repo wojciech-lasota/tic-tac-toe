@@ -1,6 +1,17 @@
 .controls {
+  .control_wrap {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    height: 6rem;
+    // align-content: center;
+  }
   margin-top: 5rem;
   button {
-    margin-top: 5rem;
+    margin-right: 5rem;
+  }
+  .cstmSwitch {
+    margin-left: 2.6rem;
   }
 }
